@@ -30,8 +30,8 @@ then
     exit 1
 fi
 # Build array from version string.
-
-a=( ${version//./ } )
+ba=( ${version//-/ } ) #base version+postfix
+a=( ${ba}//./ } ) 
 major_version=0
 # If version string is missing or has the wrong number of members, show usage message.
 
