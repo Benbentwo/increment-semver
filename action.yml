@@ -10,7 +10,7 @@ inputs:
     description: 'Version Level to update [-Mmp]'
     required: true
     default: '-p'
-  aplha:
+  alpha:
     description: 'Add [alpha] postfix'
     required: false
     default: '-p'
@@ -22,4 +22,4 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.vlevel }}
-    - ${{ inputs.aplha }}
+    - ${{ inputs.alpha }}
