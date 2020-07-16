@@ -17,4 +17,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.version-level }}
+    - ${{ inputs.vlevel }}
