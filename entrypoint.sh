@@ -31,7 +31,7 @@ then
 fi
 # Build array from version string.
 ba=( ${version//-/ } ) #base version+postfix
-a=( ${ba}//./ } ) 
+a=( ${ba//./ } ) 
 major_version=0
 # If version string is missing or has the wrong number of members, show usage message.
 
