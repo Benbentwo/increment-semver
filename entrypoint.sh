@@ -19,7 +19,6 @@ shift $(($OPTIND - 1))
 echo "cd to github workspace"
 cd ${GITHUB_WORKSPACE}
 git version
-git tag -l
 git for-each-ref refs/tags/ --count=1 --sort=-version:refname --format='%(refname:short)'
 
 version=$(git for-each-ref refs/tags/ --count=1 --sort=-version:refname --format='%(refname:short)')
@@ -74,8 +73,11 @@ then
 fi
 
 echo "${a[0]}.${a[1]}.${a[2]}"
-version=$(echo "${a[0]}.${a[1]}.${a[2]}")
+if $INPUT_ALPHA; then 
+  version=$(echo "${a[0]}.${a[1]}.${a[2]}-alpha")
+else
+  version=$(echo "${a[0]}.${a[1]}.${a[2]}")
+fi
 just_numbers=$(echo "${major_version}.${a[1]}.${a[2]}")
 echo "::set-output name=version::${version}"
 echo "::set-output name=stripped-version::${just_numbers}"
-
