@@ -18,6 +18,7 @@ shift $(($OPTIND - 1))
 #version=$1
 echo "cd to github workspace"
 cd ${GITHUB_WORKSPACE}
+git version
 git for-each-ref refs/tags/ --count=1 --sort=-version:refname --format='%(refname:short)'
 
 version=$(git for-each-ref refs/tags/ --count=1 --sort=-version:refname --format='%(refname:short)')
@@ -29,8 +30,8 @@ then
     exit 1
 fi
 # Build array from version string.
-
-a=( ${version//./ } )
+ba=( ${version//-/ } ) #base version+postfix
+a=( ${ba//./ } ) 
 major_version=0
 # If version string is missing or has the wrong number of members, show usage message.
 
@@ -72,8 +73,17 @@ then
 fi
 
 echo "${a[0]}.${a[1]}.${a[2]}"
-version=$(echo "${a[0]}.${a[1]}.${a[2]}")
+
+if [[ ! -z "$INPUT_POSTFIX" ]]; then
+  echo "POSTFIX is $INPUT_POSTFIX"
+  version=$(echo "${a[0]}.${a[1]}.${a[2]}-$INPUT_POSTFIX")
+  preversion=true
+else
+  version=$(echo "${a[0]}.${a[1]}.${a[2]}")
+  preversion=false
+fi
 just_numbers=$(echo "${major_version}.${a[1]}.${a[2]}")
+echo "Result version $version (preversion: $preversion)"
 echo "::set-output name=version::${version}"
 echo "::set-output name=stripped-version::${just_numbers}"
-
+echo "::set-output name=preversion::${version}"

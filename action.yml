@@ -6,15 +6,22 @@ branding:
   color: 'gray-dark'
 author: Benbentwo
 inputs:
-  version-level:  # id of input
+  vlevel:  # id of input
     description: 'Version Level to update [-Mmp]'
     required: true
     default: '-p'
+  postfix:
+    description: 'Add postfix'
+    required: false
+    default: 'beta'
 outputs:
   version: # id of output
     description: 'The incremented version'
+  preversion:
+    description: 'If postfix exits - it is preversion'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.version-level }}
+    - ${{ inputs.vlevel }}
+    - ${{ inputs.postfix }}
