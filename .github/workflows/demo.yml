@@ -15,8 +15,7 @@ on:
         required: true
       postfix:
         description: "Add Posfix"
-        default: "false"
-        required: true
+        required: false
 
 jobs:
   test-increment-semver-job:
