@@ -10,10 +10,10 @@ inputs:
     description: 'Version Level to update [-Mmp]'
     required: true
     default: '-p'
-  alpha:
-    description: 'Add [alpha] postfix'
+  postfix:
+    description: 'Add postfix'
     required: false
-    default: '-p'
+    default: 'beta'
 outputs:
   version: # id of output
     description: 'The incremented version'
@@ -22,4 +22,4 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.vlevel }}
-    - ${{ inputs.alpha }}
+    - ${{ inputs.postfix }}

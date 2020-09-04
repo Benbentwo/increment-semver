@@ -73,8 +73,8 @@ then
 fi
 
 echo "${a[0]}.${a[1]}.${a[2]}"
-if $INPUT_ALPHA; then 
-  version=$(echo "${a[0]}.${a[1]}.${a[2]}-alpha")
+if [[ ! -z $INPUT_POSTFIX ]]; then 
+  version=$(echo "${a[0]}.${a[1]}.${a[2]}-$INPUT_POSTFIX")
 else
   version=$(echo "${a[0]}.${a[1]}.${a[2]}")
 fi
