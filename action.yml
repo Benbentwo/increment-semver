@@ -17,6 +17,8 @@ inputs:
 outputs:
   version: # id of output
     description: 'The incremented version'
+  preversion:
+    description: 'If postfix exits - it is preversion'
 runs:
   using: 'docker'
   image: 'Dockerfile'
