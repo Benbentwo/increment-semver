@@ -81,5 +81,6 @@ else
   version=$(echo "${a[0]}.${a[1]}.${a[2]}")
 fi
 just_numbers=$(echo "${major_version}.${a[1]}.${a[2]}")
+echo "Result version $version"
 echo "::set-output name=version::${version}"
 echo "::set-output name=stripped-version::${just_numbers}"
