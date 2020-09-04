@@ -14,7 +14,7 @@ on:
         default: "true"
         required: true
       postfix:
-        description: "Add Posfix alpha and mark it as a release"
+        description: "Add Posfix"
         default: "false"
         required: true
 

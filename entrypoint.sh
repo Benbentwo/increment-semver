@@ -73,7 +73,9 @@ then
 fi
 
 echo "${a[0]}.${a[1]}.${a[2]}"
-if [[ ! -z $INPUT_POSTFIX ]]; then 
+
+if [[ ! -z "$INPUT_POSTFIX" ]]; then
+  echo "POSTFIX is $INPUT_POSTFIX"
   version=$(echo "${a[0]}.${a[1]}.${a[2]}-$INPUT_POSTFIX")
 else
   version=$(echo "${a[0]}.${a[1]}.${a[2]}")
